@@ -28,14 +28,14 @@ trait InteractsWithContainer
      */
     protected function setUpContainer(): void
     {
-        /** @var ApplicationContract&MockInterface $app */
-        $app = Mockery::mock(Application::getInstance())->makePartial();
+        $app = $this->createApplication();
 
-        $app->instance(ContainerContract::class, $app);
+        /** @var ApplicationContract&MockInterface $mock */
+        $mock = Mockery::mock($app)->makePartial();
 
-        Facade::setFacadeApplication($app);
+        Facade::setFacadeApplication($mock);
 
-        $this->app = $app;
+        $this->app = $mock;
     }
 
     /**
