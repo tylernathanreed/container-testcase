@@ -4,8 +4,9 @@ namespace Reedware\ContainerTestCase;
 
 trait ServiceContainer
 {
-    use Concerns\InteractsWithContainer,
-        Concerns\MakesArrayAssertions;
+    use Concerns\CreatesApplication;
+    use Concerns\InteractsWithContainer;
+    use Concerns\MakesArrayAssertions;
 
     /**
      * Sets up the environment before each test.
