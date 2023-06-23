@@ -8,6 +8,26 @@ use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 class Application extends Container implements ApplicationContract
 {
     /**
+     * Create a new application instance.
+     */
+    public function __construct()
+    {
+        $this->registerBaseBindings();
+    }
+
+    /**
+     * Register the basic bindings into the container.
+     */
+    protected function registerBaseBindings(): void
+    {
+        static::setInstance($this);
+
+        $this->instance('app', $this);
+
+        $this->instance(Container::class, $this);
+    }
+
+    /**
      * Get the version number of the application.
      *
      * @return string
