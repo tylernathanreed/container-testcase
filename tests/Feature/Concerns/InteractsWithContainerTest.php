@@ -5,6 +5,18 @@ use Reedware\ContainerTestCase\Tests\Fixtures\DummyDependency;
 use Reedware\ContainerTestCase\Tests\Fixtures\DummyService;
 use Reedware\ContainerTestCase\Tests\Fixtures\DummyServiceProvider;
 
+it('throws against bogus service providers', function () {
+    expect(function () {
+        test()->registerServiceProvider(DummyService::class);
+    })->toThrow(function (InvalidArgumentException $e) {
+        expect($e->getMessage())->toBe(sprintf(
+            'Class [%s] must extend from [%s].',
+            DummyService::class,
+            ServiceProvider::class,
+        ));
+    });
+});
+
 it('registers service providers', function () {
     /** @var DummyServiceProvider */
     $provider = test()->registerServiceProvider(DummyServiceProvider::class);
