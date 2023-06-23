@@ -12,7 +12,6 @@ jobs:
       fail-fast: true
       matrix:
         php: ['8.1', '8.2']
-        stability: [prefer-lowest, prefer-stable]
 
     steps:
       - name: Checkout Code
@@ -26,7 +25,7 @@ jobs:
           coverage: none
 
       - name: Install Dependencies
-        run: composer update --${{ matrix.stability }} --no-interaction --no-progress --ansi
+        run: composer update --prefer-stable --no-interaction --no-progress --ansi
 
       - name: Run Static Analysis
-        run: composer:static
+        run: composer test:static
