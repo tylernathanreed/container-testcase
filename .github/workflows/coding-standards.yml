@@ -1,17 +1,8 @@
 name: fix code styling
 
 on:
-  workflow_call:
-    inputs:
-      php:
-        default: "8.1"
-        type: string
-      message:
-        default: Fix code styling
-        type: string
-      fix:
-        default: true
-        type: boolean
+  push:
+  pull_request:
 
 jobs:
   lint:
@@ -24,7 +15,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ inputs.php }}
+          php-version: 8.1
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
 
@@ -32,10 +23,9 @@ jobs:
         run: composer global require laravel/pint
 
       - name: Run Pint
-        run: pint
+        run: composer test:lint
 
       - name: Commit linted files
-        if: ${{ inputs.fix }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: ${{ inputs.message }}
+          commit_message: Fixed code styling
