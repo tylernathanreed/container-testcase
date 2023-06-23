@@ -1,4 +1,4 @@
-name: run static analysis
+name: Static Analysis
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
         stability: [prefer-lowest, prefer-stable]
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Setup PHP
@@ -26,7 +26,7 @@ jobs:
           coverage: none
 
       - name: Install Dependencies
-        run: composer install --${{ matrix.stability }} --no-interaction --no-progress --ansi
+        run: composer update --${{ matrix.stability }} --no-interaction --no-progress --ansi
 
-      - name: Run PhpStan
-        run: vendor/bin/phpstan
+      - name: Run Static Analysis
+        run: composer:static
