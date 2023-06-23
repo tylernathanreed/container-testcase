@@ -36,4 +36,4 @@ jobs:
           command: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress ${{ matrix.flags }}
 
       - name: Execute tests
-        run: vendor/bin/pest --verbose
+        run: vendor/bin/pest -v
