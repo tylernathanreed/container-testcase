@@ -26,7 +26,7 @@
     },
     "require-dev": {
         "pestphp/pest": "^1.0|^2.8",
-        "mockery/mockery": "^1.5",
+        "mockery/mockery": "^1.6.2",
         "nesbot/carbon": "^2.67",
         "phpstan/phpstan": "^1.4.7",
         "phpunit/phpunit": "^10.1",
