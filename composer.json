@@ -1,0 +1,56 @@
+{
+    "name": "reedware/container-testcase",
+    "description": "Enables unit testing with an empty service container.",
+    "keywords": [
+        "php",
+        "framework",
+        "laravel",
+        "container",
+        "unit",
+        "test",
+        "testing"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tyler Reed",
+            "email": "tylernathanreed@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "illuminate/container": "^9.0|^10.0",
+        "illuminate/contracts": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0",
+        "illuminate/testing": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.0|^2.8",
+        "mockery/mockery": "^1.5",
+        "nesbot/carbon": "^2.67",
+        "phpstan/phpstan": "^1.4.7",
+        "phpunit/phpunit": "^10.1",
+        "laravel/pint": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Reedware\\ContainerTestCase\\": "src/"
+        },
+        "files": [
+            "src/PestExpectations.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Reedware\\ContainerTestCase\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
