@@ -1,5 +1,11 @@
 # Container TestCase
 
+[![Laravel Version](https://img.shields.io/badge/Laravel-9.x%2F10.x-blue)](https://laravel.com/)
+[![Build Status](https://github.com/tylernathanreed/container-testcase/workflows/tests/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions)
+[![Style Status](https://github.com/tylernathanreed/container-testcase/workflows/coding-standards/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions)
+[![Coverage Status](https://github.com/tylernathanreed/container-testcase/workflows/coverage/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions)
+[![Latest Stable Version](https://poser.pugx.org/reedware/container-testcase/v/stable)](https://packagist.org/packages/reedware/container-testcase)
+
 This package enables unit testing with an empty service container.
 
 ## Introduction
