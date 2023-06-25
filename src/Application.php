@@ -3,6 +3,7 @@
 namespace Reedware\ContainerTestCase;
 
 use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\Container as ContainerContract;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 
 class Application extends Container implements ApplicationContract
@@ -23,8 +24,8 @@ class Application extends Container implements ApplicationContract
         static::setInstance($this);
 
         $this->instance('app', $this);
-
         $this->instance(Container::class, $this);
+        $this->instance(ContainerContract::class, $this);
     }
 
     /**
