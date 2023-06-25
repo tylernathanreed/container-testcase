@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\ServiceProvider;
 use Mockery\MockInterface;
 use Reedware\ContainerTestCase\Tests\Fixtures\DummyDependency;
 use Reedware\ContainerTestCase\Tests\Fixtures\DummyService;

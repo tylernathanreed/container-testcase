@@ -5,7 +5,6 @@ namespace Reedware\ContainerTestCase\Concerns;
 use Carbon\CarbonImmutable;
 use Closure;
 use Illuminate\Contracts\Config\Repository as Config;
-use Illuminate\Contracts\Container\Container as ContainerContract;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
@@ -14,7 +13,6 @@ use Illuminate\Support\ServiceProvider;
 use InvalidArgumentException;
 use Mockery;
 use Mockery\MockInterface;
-use Reedware\ContainerTestCase\Application;
 
 trait InteractsWithContainer
 {

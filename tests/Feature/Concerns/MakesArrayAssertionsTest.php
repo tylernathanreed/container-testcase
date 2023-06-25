@@ -13,7 +13,7 @@ beforeEach()->skip(function () {
 
     $phpunit = Composer::getVersion('phpunit/phpunit');
 
-    $isLaravel9  = explode('.', $laravel)[0] == 9;
+    $isLaravel9 = explode('.', $laravel)[0] == 9;
     $isPhpUnit10 = explode('.', $phpunit)[0] == 10;
 
     return $isLaravel9 && $isPhpUnit10;
