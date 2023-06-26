@@ -3,7 +3,8 @@
 namespace Reedware\ContainerTestCase\Concerns;
 
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
-use Reedware\ContainerTestCase\Application;
+use Illuminate\Foundation\Application as LaravelApplication;
+use Reedware\ContainerTestCase\Application as ReedwareApplication;
 
 trait CreatesApplication
 {
@@ -12,6 +13,10 @@ trait CreatesApplication
      */
     public function createApplication(): ApplicationContract
     {
-        return new Application();
+        if (class_exists(LaravelApplication::class)) {
+            return new LaravelApplication('~');
+        }
+        
+        return new ReedwareApplication();
     }
 }
