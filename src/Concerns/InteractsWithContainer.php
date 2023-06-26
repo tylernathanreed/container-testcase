@@ -4,6 +4,7 @@ namespace Reedware\ContainerTestCase\Concerns;
 
 use Carbon\CarbonImmutable;
 use Closure;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Support\Arr;
@@ -47,7 +48,7 @@ trait InteractsWithContainer
 
         Facade::setFacadeApplication($app);
     }
-    
+
     /**
      * Creates the specified service provider.
      */

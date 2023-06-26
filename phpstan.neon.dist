@@ -6,3 +6,4 @@ parameters:
   level: 9
   ignoreErrors:
     - "#Call to an undefined method Mockery\\\\#"
+    - "#should return Illuminate\\\\Contracts\\\\Foundation\\\\Application but returns Illuminate\\\\Foundation\\\\Application#"

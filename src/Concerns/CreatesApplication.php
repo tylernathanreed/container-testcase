@@ -16,7 +16,7 @@ trait CreatesApplication
         if (class_exists(LaravelApplication::class)) {
             return new LaravelApplication('~');
         }
-        
+
         return new ReedwareApplication();
     }
 }
