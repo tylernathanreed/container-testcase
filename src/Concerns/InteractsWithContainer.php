@@ -31,11 +31,23 @@ trait InteractsWithContainer
         /** @var ApplicationContract&MockInterface $mock */
         $mock = Mockery::mock($app)->makePartial();
 
-        Facade::setFacadeApplication($mock);
+        $this->registerApplicationBindings($mock);
 
         $this->app = $mock;
     }
 
+    /**
+     * Registers the specified instance to all of the application bindings.
+     */
+    protected function registerApplicationBindings(ApplicationContract $app): void
+    {
+        Container::setInstance($app);
+        $app->instance('app', $app);
+        $app->instance(Container::class, $app);
+
+        Facade::setFacadeApplication($app);
+    }
+    
     /**
      * Creates the specified service provider.
      */
