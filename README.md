@@ -9,12 +9,32 @@
 
 This package enables unit testing with an empty service container.
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+    - [1. Extension](#extension)
+    - [2. Trait](#trait)
+- [Usage](#usage)
+    - [1. Service Provider](#service-provider)
+    - [2. The Application Instance](#application)
+    - [3. The Service Container](#container)
+        - [Make](#make)
+        - [Mock](#mock)
+        - [Mock As](#mock-as)
+        - [Mock Config](#mock-config)
+- [Assertions](#assertions)
+    - [1. Array Subset](#array-subset)
+- [Pest](#pest)
+
+<a name="introduction"></a>
 ## Introduction
 
 I'm a huge advocate for unit testing, but when developing packages for Laravel, I often find myself needing the service container within my unit tests. This package simply implements a pattern I've been following for years, but never defined in a shared location.
 
 This approach to testing keeps your test cases light, as you don't have to boot the entire Laravel application, but you still get some quality of life features necessary for testing services created as a part of package development.
 
+<a name="installation"></a>
 ## Installation
 
 Install this package using Composer:
@@ -27,6 +47,7 @@ Take note of the `--dev` flag. This package is intended for testing. As such, it
 
 Next, you have two options: Extension or Trait.
 
+<a name="extension"></a>
 ### Extension
 
 Change your test case to extend from `Reedware\ContainerTestCase\ContainerTestCase`.
@@ -40,6 +61,7 @@ class TestCase extends ContainerTestCase
 }
 ```
 
+<a name="trait"></a>
 ### Trait
 
 Add the `ServiceContainer` trait to your test case.
@@ -72,8 +94,10 @@ protected function tearDown(): void
 }
 ```
 
+<a name="usage"></a>
 ## Usage
 
+<a name="service-provider"></a>
 ### Service Provider
 
 If you're writing a package that binds into the service container, chances are, you have a service provider. You'll want to register your service provider during the setup process:
@@ -100,6 +124,7 @@ protected function setUp(): void
 
 Any dependencies in your `boot()` method will be injected from the service container, exactly how the Laravel Framework does it.
 
+<a name="application"></a>
 ### The Application Instance
 
 The application instance in your test is not the same as the one provided by the Laravel Framework. The provided application instance offers full container functionality, but throws by default on any non-container method (e.g. `$this->app->version()`). If you need to use these methods in your service providers, you can provide expectations to the application instance, as it also acts as a partial mock instance.
@@ -120,10 +145,12 @@ public function it_bails_on_production(): void
 }
 ```
 
+<a name="container"></a>
 ### The Service Container
 
 The application instance acts as your service container. Similar to Laravel's feature test, some mocking and container helpers are available as methods on your test cases:
 
+<a name="make"></a>
 #### Make
 
 Creates a new instance of the specified service using the container. Alias for `$this->app->make(...)`.
@@ -133,6 +160,7 @@ Usage:
 $service = $this->make(MyService::class);
 ```
 
+<a name="mock"></a>
 #### Mock
 
 Creates a mock of the specified service and binds it to the container.
@@ -156,6 +184,7 @@ $mock
 
 Note: This method binds the mock instance to `MyService::class`. If you just want a mocked service without binding it to the container, use `Mockery::mock(MyService::class)`.
 
+<a name="mock-as"></a>
 #### Mock As
 
 Creates a mock of the specified service and binds it to the container under the given alias. The `$this->mock(...)` method will bind the service to the container using its class name. However, if you wish to bind it under a different name, you can use `$this->mockAs(...)`.
@@ -169,6 +198,7 @@ $mock = $this->mockAs(MyService::class, 'acme.service', function (MockInterface 
 
 Anything that resolves `acme.service` from the container will now receive your mocked service.
 
+<a name="mock-config"></a>
 #### Mock Config
 
 For packages that ship with a configuration file, and still want to unit test their services, you can use `$this->mockConfig(...)` to bind a basic configuration repository to the container that yields the provided values.
@@ -184,10 +214,12 @@ $this->mockConfig([
 config('my-package.setting-1'); // "foo"
 ```
 
+<a name="assertions"></a>
 ## Assertions
 
 Laravel's Test Case comes with some basic assertions that are useful in unit tests. These have also been included.
 
+<a name="array-subset"></a>
 ### Array Subset
 
 Asserts that an array has a specified subset.
@@ -205,6 +237,7 @@ public function it_has_some_attributes(): void
 }
 ```
 
+<a name="pest"></a>
 ### Pest
 
 If you're using [Pest](https://pestphp.com/), expectation style assertions are also available.
