@@ -35,4 +35,4 @@ jobs:
           command: composer update --prefer-stable --prefer-dist --no-interaction --no-progress
 
       - name: Execute tests
-        run: vendor/bin/pest -v
+        run: composer test:unit
