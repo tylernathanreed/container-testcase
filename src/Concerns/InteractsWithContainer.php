@@ -102,7 +102,7 @@ trait InteractsWithContainer
     /**
      * Creates a mock of the specified service and binds it to the container.
      */
-    public function mock(string|object $service, ?Closure $callback = null): MockInterface
+    public function mock(string|object $service, Closure $callback = null): MockInterface
     {
         $alias = is_string($service)
             ? $service
@@ -114,7 +114,7 @@ trait InteractsWithContainer
     /**
      * Creates a mock of the specified service and binds it to the container under the given alias.
      */
-    public function mockAs(string|object $service, string $alias, ?Closure $callback = null): MockInterface
+    public function mockAs(string|object $service, string $alias, Closure $callback = null): MockInterface
     {
         /** @var MockInterface */
         $mock = Mockery::mock($service);
