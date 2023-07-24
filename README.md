@@ -23,9 +23,12 @@ This package enables unit testing with an empty service container.
         - [Mock](#mock)
         - [Mock As](#mock-as)
         - [Mock Config](#mock-config)
+    - [4. Foundation Helpers](#foundation-helpers)
 - [Assertions](#assertions)
     - [1. Array Subset](#array-subset)
 - [Pest](#pest)
+    - [1. Expectations](#pest-expectations)
+    - [2. Pest Helpers](#pest-helpers)
 
 <a name="introduction"></a>
 ## Introduction
@@ -48,7 +51,7 @@ Take note of the `--dev` flag. This package is intended for testing. As such, it
 Next, you have two options: Extension or Trait.
 
 <a name="extension"></a>
-### Extension
+### 1. Extension
 
 Change your test case to extend from `Reedware\ContainerTestCase\ContainerTestCase`.
 
@@ -62,7 +65,7 @@ class TestCase extends ContainerTestCase
 ```
 
 <a name="trait"></a>
-### Trait
+### 2. Trait
 
 Add the `ServiceContainer` trait to your test case.
 
@@ -98,7 +101,7 @@ protected function tearDown(): void
 ## Usage
 
 <a name="service-provider"></a>
-### Service Provider
+### 1. Service Provider
 
 If you're writing a package that binds into the service container, chances are, you have a service provider. You'll want to register your service provider during the setup process:
 
@@ -125,7 +128,7 @@ protected function setUp(): void
 Any dependencies in your `boot()` method will be injected from the service container, exactly how the Laravel Framework does it.
 
 <a name="application"></a>
-### The Application Instance
+### 2. The Application Instance
 
 The application instance in your test is not the same as the one provided by the Laravel Framework. The provided application instance offers full container functionality, but throws by default on any non-container method (e.g. `$this->app->version()`). If you need to use these methods in your service providers, you can provide expectations to the application instance, as it also acts as a partial mock instance.
 
@@ -146,7 +149,7 @@ public function it_bails_on_production(): void
 ```
 
 <a name="container"></a>
-### The Service Container
+### 3. The Service Container
 
 The application instance acts as your service container. Similar to Laravel's feature test, some mocking and container helpers are available as methods on your test cases:
 
@@ -214,13 +217,27 @@ $this->mockConfig([
 config('my-package.setting-1'); // "foo"
 ```
 
+<a name="foundation-helpers"></a>
+## 4. Foundation Helpers
+
+There are some helper methods that ship with the Laravel Framework that help you interact with the service container.
+This package replicates a subset of those same methods, so that you get the same quality of life, but without having to include the entire Laravel Framework in your package.
+Don't worry, if you do decide to use the entire Laravel Framework, Laravel's helpers will take precedence over these.
+
+- [app](https://laravel.com/docs/10.x/helpers#method-app)
+- [dd](https://laravel.com/docs/10.x/helpers#method-dd)
+- [dump](https://laravel.com/docs/10.x/helpers#method-dump)
+- [now](https://laravel.com/docs/10.x/helpers#method-now)
+- [resolve](https://laravel.com/docs/10.x/helpers#method-resolve)
+- [today](https://laravel.com/docs/10.x/helpers#method-today)
+
 <a name="assertions"></a>
-## Assertions
+# Assertions
 
 Laravel's Test Case comes with some basic assertions that are useful in unit tests. These have also been included.
 
 <a name="array-subset"></a>
-### Array Subset
+## 1. Array Subset
 
 Asserts that an array has a specified subset.
 
@@ -238,9 +255,28 @@ public function it_has_some_attributes(): void
 ```
 
 <a name="pest"></a>
-### Pest
+# Pest
 
-If you're using [Pest](https://pestphp.com/), expectation style assertions are also available.
+If you're using [Pest](https://pestphp.com/), this package provides some additional extensions.
+
+<a name="pest-expectations"></a>
+## 1. Expectations
+
+The assertions for PHPUnit offered by this package also have their own Pest expectation flavors:
 
 - **PHPUnit => Pest**
 - `$this->assertArraySubset($subset, $actual)` => `expect($actual)->toContainArraySubset($subset)`
+
+<a name="pest-helpers"></a>
+## 2. Pest Helpers
+
+If you're focused on package development, and you want to use Pest, be wary of the [Laravel Pest Plugin](https://github.com/pestphp/pest-plugin-laravel), (`pestphp/pest-plugin-laravel`).
+This package requires the entire Laravel Framework, which isn't always the best approach for package development.
+Therefore, this package includes a subset of the helpers offered by the Laravel Pest Plugin, specifically those that interact with the service container.
+
+- `swap($abstract, $instance)`
+- `instance($abstract, $instance)`
+- `mock($abstract, $mock = null)`
+- `mockAs($abstract, $alias, $mock = null)`
+- `partialMock($abstract, $mock = null)`
+- `spy($abstract, $mock = null)`

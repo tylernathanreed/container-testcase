@@ -45,3 +45,13 @@ if (! function_exists('resolve')) {
         return app($name, $parameters);
     }
 }
+
+if (! function_exists('today')) {
+    /**
+     * Creates a new Carbon instance for the current date.
+     */
+    function today(DateTimeZone|string $tz = null): Carbon
+    {
+        return Carbon::today($tz);
+    }
+}

@@ -24,3 +24,9 @@ it('resolves from the service container', function () {
 
     expect(resolve('foo'))->toBe('bar');
 });
+
+it('returns the today timestamp', function () {
+    Carbon::setTestNow('2023-01-01 12:34:56');
+
+    expect(today()->toDateTimeString())->toBe('2023-01-01 00:00:00');
+});
