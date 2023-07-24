@@ -7,3 +7,5 @@ parameters:
   ignoreErrors:
     - "#Call to an undefined method Mockery\\\\#"
     - "#should return Illuminate\\\\Contracts\\\\Foundation\\\\Application but returns Illuminate\\\\Foundation\\\\Application#"
+    - "#Call to an undefined method Pest\\\\PendingCalls\\\\TestCall\\|Pest\\\\Support\\\\HigherOrderTapProxy::\\w+\\(\\)#"
+    - "#should return Mockery\\\\MockInterface but returns Mockery\\\\LegacyMockInterface#"

@@ -100,6 +100,24 @@ trait InteractsWithContainer
     }
 
     /**
+     * Alias of {@see $this->instance()}.
+     */
+    public function swap(string $abstract, string|object $instance): string|object
+    {
+        return $this->instance($abstract, $instance);
+    }
+
+    /**
+     * Registers the specified instance of an object to the container.
+     */
+    public function instance(string $abstract, string|object $instance): string|object
+    {
+        $this->app?->instance($abstract, $instance);
+
+        return $instance;
+    }
+
+    /**
      * Creates a mock of the specified service and binds it to the container.
      */
     public function mock(string|object $service, ?Closure $callback = null): MockInterface
@@ -148,6 +166,30 @@ trait InteractsWithContainer
                     return Arr::set($config, $key, $value);
                 });
         });
+    }
+
+    /**
+     * Mocks a partial instance of the specified object in the container.
+     */
+    public function partialMock(string $abstract, ?Closure $mock = null): MockInterface
+    {
+        $mock = Mockery::mock(...array_filter(func_get_args()))->makePartial();
+
+        $this->instance($abstract, $mock);
+
+        return $mock;
+    }
+
+    /**
+     * Spies an instance of the specified object in the container.
+     */
+    protected function spy(string $abstract, ?Closure $mock = null): MockInterface
+    {
+        $spy = Mockery::spy(...array_filter(func_get_args()));
+
+        $this->instance($abstract, $spy);
+
+        return $spy;
     }
 
     /**

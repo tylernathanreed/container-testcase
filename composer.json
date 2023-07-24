@@ -22,7 +22,8 @@
         "illuminate/container": "^9.52|^10.0",
         "illuminate/contracts": "^9.52|^10.0",
         "illuminate/support": "^9.52|^10.0",
-        "illuminate/testing": "^9.52|^10.0"
+        "illuminate/testing": "^9.52|^10.0",
+        "symfony/var-dumper": "^6.0"
     },
     "require-dev": {
         "pestphp/pest": "^1.22|^2.8",
@@ -37,6 +38,8 @@
             "Reedware\\ContainerTestCase\\": "src/"
         },
         "files": [
+            "src/Helpers/foundation.php",
+            "src/Helpers/pest.php",
             "src/PestExpectations.php"
         ]
     },
