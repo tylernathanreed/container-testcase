@@ -1,14 +1,13 @@
 <?php
 
 use Mockery\MockInterface;
-use Reedware\ContainerTestCase\Tests\Fixtures\DummyService;
-
 use function Pest\Laravel\instance;
 use function Pest\Laravel\mock;
 use function Pest\Laravel\mockAs;
 use function Pest\Laravel\partialMock;
 use function Pest\Laravel\spy;
 use function Pest\Laravel\swap;
+use Reedware\ContainerTestCase\Tests\Fixtures\DummyService;
 
 it('swaps instances in the container', function () {
     app()->instance('foo', 'bar');
