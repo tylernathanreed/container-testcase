@@ -10,19 +10,17 @@ jobs:
 
     strategy:
       fail-fast: true
-      matrix:
-        php: ['8.2']
 
-    name: PHP ${{ matrix.php }}
+    name: PHP Code Coverage
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.4
           extensions: dom, curl, libxml, mbstring, zip, gd, xdebug
           tools: composer:v2
           coverage: xdebug
