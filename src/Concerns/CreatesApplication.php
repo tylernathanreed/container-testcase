@@ -17,6 +17,6 @@ trait CreatesApplication
             return new LaravelApplication('~');
         }
 
-        return new ReedwareApplication();
+        return new ReedwareApplication;
     }
 }

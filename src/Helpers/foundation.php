@@ -14,7 +14,7 @@ if (! function_exists('app')) {
      *
      * @param  array<string,mixed>  $parameters
      */
-    function app(string $abstract = null, array $parameters = []): mixed
+    function app(?string $abstract = null, array $parameters = []): mixed
     {
         if (is_null($abstract)) {
             return Container::getInstance();
@@ -28,7 +28,7 @@ if (! function_exists('now')) {
     /**
      * Creates and returns a new Carbon instance for the current time.
      */
-    function now(DateTimeZone|string $tz = null): Carbon
+    function now(DateTimeZone|string|null $tz = null): Carbon
     {
         return Carbon::now($tz);
     }
@@ -50,7 +50,7 @@ if (! function_exists('today')) {
     /**
      * Creates a new Carbon instance for the current date.
      */
-    function today(DateTimeZone|string $tz = null): Carbon
+    function today(DateTimeZone|string|null $tz = null): Carbon
     {
         return Carbon::today($tz);
     }
