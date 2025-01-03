@@ -1,6 +1,6 @@
 # Container TestCase
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-9.x%2F10.x-blue)](https://laravel.com/)
+[![Laravel Version](https://img.shields.io/badge/Laravel-10.x%2F11.x-blue)](https://laravel.com/)
 [![Automated Tests](https://github.com/tylernathanreed/container-testcase/actions/workflows/tests.yml/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions/workflows/tests.yml)
 [![Coding Standards](https://github.com/tylernathanreed/container-testcase/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions/workflows/coding-standards.yml)
 [![Code Coverage](https://github.com/tylernathanreed/container-testcase/actions/workflows/coverage.yml/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions/workflows/coverage.yml)
@@ -13,8 +13,9 @@ This package enables unit testing with an empty service container.
 
 - [Introduction](#introduction)
 - [Installation](#installation)
-    - [1. Extension](#extension)
-    - [2. Trait](#trait)
+    - [1. Versioning](#versioning)
+    - [2. Extension](#extension)
+    - [3. Trait](#trait)
 - [Usage](#usage)
     - [1. Service Provider](#service-provider)
     - [2. The Application Instance](#application)
@@ -48,10 +49,20 @@ composer require reedware/container-testcase --dev
 
 Take note of the `--dev` flag. This package is intended for testing. As such, it should only be required in dev settings.
 
-Next, you have two options: Extension or Trait.
+<a name="extension"></a>
+### 1. Versioning
+
+This package is maintained with the latest version of Laravel in mind, but follows Laravel's [Support Policy](https://laravel.com/docs/master/releases#support-policy).
+
+| Package | Laravel     | PHP        |
+| :-----: | :---------: | :--------: |
+|     2.x | 10.x - 11.x | 8.2 - 8.4+ |
+|     1.x |  9.x - 10.x | 8.1 - 8.3+ |
+
+After deciding which version is right for you, you have two installation options: Extension or Trait.
 
 <a name="extension"></a>
-### 1. Extension
+### 2. Extension
 
 Change your test case to extend from `Reedware\ContainerTestCase\ContainerTestCase`.
 
@@ -65,7 +76,7 @@ class TestCase extends ContainerTestCase
 ```
 
 <a name="trait"></a>
-### 2. Trait
+### 3. Trait
 
 Add the `ServiceContainer` trait to your test case.
 
