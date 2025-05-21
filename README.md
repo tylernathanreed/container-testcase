@@ -1,6 +1,6 @@
 # Container TestCase
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-10.x%2F11.x%2F12.x-blue)](https://laravel.com/)
+[![Laravel Version](https://img.shields.io/badge/Laravel-11.x%2F12.x-blue)](https://laravel.com/)
 [![Automated Tests](https://github.com/tylernathanreed/container-testcase/actions/workflows/tests.yml/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions/workflows/tests.yml)
 [![Coding Standards](https://github.com/tylernathanreed/container-testcase/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions/workflows/coding-standards.yml)
 [![Code Coverage](https://github.com/tylernathanreed/container-testcase/actions/workflows/coverage.yml/badge.svg)](https://github.com/tylernathanreed/container-testcase/actions/workflows/coverage.yml)
@@ -56,7 +56,8 @@ This package is maintained with the latest version of Laravel in mind, but follo
 
 | Package | Laravel     | PHP        |
 | :-----: | :---------: | :--------: |
-|     2.x | 10.x - 12.x | 8.2 - 8.4+ |
+|     3.x | 11.x - 12.x | 8.3 - 8.4+ |
+|     2.x | 10.x - 11.x | 8.2 - 8.4+ |
 |     1.x |  9.x - 10.x | 8.1 - 8.3+ |
 
 After deciding which version is right for you, you have two installation options: Extension or Trait.
